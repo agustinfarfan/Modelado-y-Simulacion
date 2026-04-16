@@ -11,9 +11,10 @@ function App() {
   return (
     <SimulationProvider>
       <BrowserRouter>
-      <div className="flex h-screen overflow-hidden bg-slate-950 text-slate-200 selection:bg-cyan-500/30">
+      <div className="flex h-screen overflow-hidden bg-slate-950 text-slate-200 selection:bg-cyan-500/30 font-sans">
         <Sidebar />
-        <main className="flex-1 overflow-y-auto p-4 sm:p-8 lg:p-12">
+        <main className="flex-1 overflow-y-auto p-4 sm:p-8 lg:p-12 relative">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-cyan-900/10 via-slate-950 to-slate-950 pointer-events-none -z-10"></div>
           <Routes>
             <Route path="/" element={<Navigate to="/trayectoria" replace />} />
             <Route path="/trayectoria" element={<Trayectoria />} />

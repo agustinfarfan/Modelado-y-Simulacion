@@ -92,7 +92,7 @@ export default function Telemetria() {
 
           <div className="bg-slate-900 border border-slate-800 shadow-xl p-6 rounded-2xl flex-1 flex flex-col min-h-[400px]">
             <h3 className="text-lg font-bold text-white mb-2">Construcción Geométrica Analítica de Polinomio de Lagrange</h3>
-            <p className="text-xs text-slate-400 mb-6">Muestra los ecos reales recolectados (Nodos Rojos) y cómo la curva matemática perfecta transita sobre ellos de forma limpia sin fracturas, logrando adivinar por dónde viajó la nave mientras la Tierra no escuchaba su radar.</p>
+            <p className="text-xs text-slate-400 mb-6">Muestra los ecos reales recolectados (Nodos Rojos) y cómo la curva matemática perfecta transita sobre ellos de forma limpia.</p>
             
             {results && (
               <div className="flex-1 mt-auto">
@@ -107,7 +107,7 @@ export default function Telemetria() {
                     </YAxis>
                     <RechartsTooltip contentStyle={{ backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '12px' }} itemStyle={{ color: '#e2e8f0' }}/>
                     <Legend wrapperStyle={{ paddingTop: '20px' }} />
-                    <Line data={results.curve} type="monotone" dataKey="d" name="Curva Teórica (Lagrange Estricto)" stroke="#6366f1" strokeWidth={3} dot={false} />
+                    <Line data={results.curve} type="monotone" dataKey="d" name="Curva Teórica (Lagrange)" stroke="#6366f1" strokeWidth={3} dot={false} />
                     <Scatter data={results.points} name="Puntos GPS Reales (Ecos DSN)" fill="#f43f5e" />
                   </ComposedChart>
                 </ResponsiveContainer>

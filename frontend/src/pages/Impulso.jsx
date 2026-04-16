@@ -36,12 +36,12 @@ export default function Impulso() {
   return (
     <div className="max-w-7xl mx-auto space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <header>
-        <h2 className="text-3xl font-bold text-slate-100">Etapa Principal (Motor SLS)</h2>
-        <p className="text-slate-400 mt-2">Integración de Simpson para descubrir exactamente cuánto momentum entrega el motor al cohete, eludiendo amortiguaciones atmosféricas complejas.</p>
+        <h2 className="text-3xl font-bold text-slate-100 tracking-tight">Etapa Principal (Motor SLS)</h2>
+        <p className="text-slate-400 mt-2 font-medium">Integración de Simpson para descubrir exactamente cuánto momentum entrega el motor al cohete, eludiendo amortiguaciones atmosféricas complejas.</p>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="bg-slate-900 border border-slate-800 shadow-xl p-6 rounded-2xl flex flex-col gap-6">
+        <div className="bg-slate-900 shadow-xl border border-slate-800 p-6 rounded-2xl flex flex-col gap-6">
           <h3 className="text-xl font-bold text-orange-500">Curva de Quemado</h3>
           
           <div className="space-y-5">
@@ -54,7 +54,7 @@ export default function Impulso() {
             <div>
               <label className="block text-sm text-slate-300 font-bold mb-1">Puntos de Muestreo Numérico (N)</label>
               <input type="text" name="n" value={formData.n} onChange={handleChange} className="w-full bg-slate-950/50 border border-slate-700/80 rounded-xl px-4 py-2.5 text-slate-200 font-mono focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all"/>
-              <p className="text-xs text-slate-500 mt-1">Cuántas subdivisiones matemáticas (trapecios/parábolas) usará la computadora. Valores altos = más exactitud técnica.</p>
+              <p className="text-xs text-slate-500 mt-1">Cuántas subdivisiones matemáticas (trapecios/parábolas) usará la computadora.</p>
             </div>
           </div>
 
@@ -67,23 +67,25 @@ export default function Impulso() {
 
         <div className="lg:col-span-2 space-y-6 flex flex-col">
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-slate-900 border border-slate-800 shadow-xl p-6 rounded-2xl flex flex-col">
+            <div className="bg-slate-900 shadow-xl border border-slate-800 p-6 rounded-2xl flex flex-col">
               <span className="text-slate-400 text-xs font-bold uppercase tracking-wider">Momento: Regla de Simpson (Refinada)</span>
-              <div className="mt-2 text-3xl font-bold font-mono text-emerald-400">{results ? results.imp_simpson.toFixed(4) : '—'} <span className="text-sm font-sans text-emerald-400/50">GigaNewtons·s</span></div>
+              <div className="mt-2 text-3xl font-bold font-mono text-emerald-400">{results ? results.imp_simpson.toFixed(4) : '—'} <span className="text-sm font-sans text-emerald-400/50">GNs</span></div>
             </div>
-            <div className="bg-slate-900 border border-slate-800 shadow-xl p-6 rounded-2xl flex flex-col">
+            <div className="bg-slate-900 shadow-xl border border-slate-800 p-6 rounded-2xl flex flex-col">
               <span className="text-slate-400 text-xs font-bold uppercase tracking-wider">Momento: Trapecio Simple (Ordinaria)</span>
-              <div className="mt-2 text-3xl font-bold font-mono text-orange-400">{results ? results.imp_trapecio.toFixed(4) : '—'} <span className="text-sm font-sans text-orange-400/50">GigaNewtons·s</span></div>
+              <div className="mt-2 text-3xl font-bold font-mono text-orange-400">{results ? results.imp_trapecio.toFixed(4) : '—'} <span className="text-sm font-sans text-orange-400/50">GNs</span></div>
             </div>
           </div>
 
-          <div className="bg-slate-900 border border-slate-800 shadow-xl p-6 rounded-2xl flex-1 flex flex-col min-h-[400px]">
-            <h3 className="text-lg font-bold text-white mb-2">Disipación Atmosférica del Motor</h3>
-            <p className="text-xs text-slate-400 mb-6">El área coloreada total bajo esta curva modela la suma final de momento físico.</p>
+          <div className="bg-slate-900 shadow-xl border border-slate-800 p-6 rounded-2xl flex-1 flex flex-col min-h-[400px]">
+             <div className="mb-4">
+               <h3 className="text-lg font-bold text-white mb-2">Disipación Atmosférica del Motor</h3>
+               <p className="text-xs text-slate-400">El área coloreada total bajo esta curva modela la suma total de momento físico.</p>
+             </div>
             {results && (
               <div className="flex-1 mt-auto">
                 <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={results.curve} margin={{ top: 10, right: 10, bottom: 20, left: 20 }}>
+                  <AreaChart data={results.curve} margin={{ top: 10, right: 10, bottom: 20, left: 10 }}>
                     <defs>
                       <linearGradient id="colorF" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="5%" stopColor="#f97316" stopOpacity={0.4}/>
