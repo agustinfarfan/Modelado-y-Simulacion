@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "Fira Code", monospace;
+  --color-slate-950: #0a0a0a;
+  --color-slate-900: #121212;
+  --color-slate-800: #1e1e1e;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-200 font-sans tracking-tight;
+    background-image: radial-gradient(circle at 50% 0%, #1e3a8a20 0%, transparent 60%);
+  }
+}
+
+/* Scrollbar premium */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-800 rounded-full border-2 border-slate-950;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-700;
+}
