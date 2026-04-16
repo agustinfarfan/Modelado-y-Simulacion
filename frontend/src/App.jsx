@@ -5,10 +5,12 @@ import Impulso from './pages/Impulso.jsx';
 import Telemetria from './pages/Telemetria.jsx';
 import Convergencia from './pages/Convergencia.jsx';
 import Benchmark from './pages/Benchmark.jsx';
+import { SimulationProvider } from './context/SimulationContext.jsx';
 
 function App() {
   return (
-    <BrowserRouter>
+    <SimulationProvider>
+      <BrowserRouter>
       <div className="flex h-screen overflow-hidden bg-slate-950 text-slate-200 selection:bg-cyan-500/30">
         <Sidebar />
         <main className="flex-1 overflow-y-auto p-4 sm:p-8 lg:p-12">
@@ -23,6 +25,7 @@ function App() {
         </main>
       </div>
     </BrowserRouter>
+  </SimulationProvider>
   );
 }
 
